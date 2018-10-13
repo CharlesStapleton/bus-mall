@@ -18,12 +18,12 @@ var clickCounter = 0; // counter for all of our clicks
 
 var allImages = []; // container for all images
 
-var ProductImage = function (src){
+var ProductImage = function (src, name){
   // builds images
   this.src = src;
   this.likes = 0;
   this.appeared = 0;
-  // this.name = name;
+  this.name = name;
   allImages.push(this);
 };
 
@@ -101,6 +101,9 @@ var handleBusmalClick = function (event) {
       // shut the listener off
       imageSectionContainer.removeEventListener('click', handleBusmalClick);
 
+      // Show images' likes/appearances 
+      console.log(allImages);
+
       // make chart appear
       // renderChart();
     }
@@ -111,26 +114,26 @@ imageSectionContainer.addEventListener('click', handleBusmalClick);
 
 // instantiate all new images
 // (new Image('cool.jpg))
-new ProductImage('../img/bag.jpg');
-new ProductImage('../img/banana.jpg');
-new ProductImage('../img/bathroom.jpg');
-new ProductImage('../img/boots.jpg');
-new ProductImage('../img/breakfast.jpg');
-new ProductImage('../img/bubblegum.jpg');
-new ProductImage('../img/chair.jpg');
-new ProductImage('../img/cthulhu.jpg');
-new ProductImage('../img/dog-duck.jpg');
-new ProductImage('../img/dragon.jpg');
-new ProductImage('../img/pen.jpg');
-new ProductImage('../img/pet-sweep.jpg');
-new ProductImage('../img/scissors.jpg');
-new ProductImage('../img/shark.jpg');
-new ProductImage('../img/sweep.png');
-new ProductImage('../img/tauntaun.jpg');
-new ProductImage('../img/unicorn.jpg');
-new ProductImage('../img/usb.gif');
-new ProductImage('../img/water-can.jpg');
-new ProductImage('../img/wine-glass.jpg');
+new ProductImage('../img/bag.jpg', 'Bag');
+new ProductImage('../img/banana.jpg', 'Banana');
+new ProductImage('../img/bathroom.jpg', 'Bathroom');
+new ProductImage('../img/boots.jpg', 'Boots');
+new ProductImage('../img/breakfast.jpg', 'Breakfast');
+new ProductImage('../img/bubblegum.jpg', 'Bubblegum');
+new ProductImage('../img/chair.jpg', 'Chair');
+new ProductImage('../img/cthulhu.jpg', 'Cthulhu');
+new ProductImage('../img/dog-duck.jpg', 'Dog Duck');
+new ProductImage('../img/dragon.jpg', 'Dragon');
+new ProductImage('../img/pen.jpg', 'Pen');
+new ProductImage('../img/pet-sweep.jpg', 'Pet Sweep');
+new ProductImage('../img/scissors.jpg', 'Scissors');
+new ProductImage('../img/shark.jpg', 'Shark');
+new ProductImage('../img/sweep.png', 'Sweep');
+new ProductImage('../img/tauntaun.jpg', 'Tauntaun');
+new ProductImage('../img/unicorn.jpg', 'Unicorn');
+new ProductImage('../img/usb.gif', 'USB');
+new ProductImage('../img/water-can.jpg', 'Water Can');
+new ProductImage('../img/wine-glass.jpg', 'Wine Glass');
 
 // ======================================
 // Charts

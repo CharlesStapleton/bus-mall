@@ -2,47 +2,142 @@
   box-sizing: border-box;
 }
 
-main{
-  max-width: 900px;
-  margin: 0 auto;
+/* body {
+  margin-left: 480px;
+  margin-top: 30px;
+} */
+
+.active {
+  background-color: grey;
+}
+
+header {
+  font-family: sans-serif;
+  height: 100px;
+  padding: 13px;
+  box-sizing: border-box;
+}
+
+/* body, html {
+height: 100%;
+width: 960px;
+} */
+
+nav {
+  float: right;
+}
+
+nav li {
+  display: inline;
+  position: relative;
+  /* margin: 10px; */
+  bottom: 25px;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 5px; 
+}
+
+/* #rightIcons {
+  position: relative;
+  left: 10px;
+} */
+
+/* header div {
+  float: left;
+  width: 240px;
+  margin: auto;
+} */
+
+/* .headerFont {
+  display: inline-block;
+  position: relative;
+  font-family: 'Yellowtail', cursive;
+  font-size: 40px;
+  top: -16px;
+} */
+
+aside {
+  /* display: inline-block; */
+  font-size: 18pt;
+  font: sans-serif;
+  height: 500px;
+  padding-left: 30px;
+  width: 33.333%;
+  float: left;
+  border: 1px solid black;
 }
 
 h1 {
-  font-size: 24pt;
+font-size: 30px;
+font-family: sans-serif;
+font-weight: bold;
 }
 
-h2 {
-  font-size: 18pt;
-}
-
-section {
-  margin-top: 0;
-  float: left;
-  width: 66.666%;;
+hr {
+  display: block;
+  height: 15px;
+  border: 10;
+  background-color: rgb(204, 204, 204);
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  margin-bottom: 60px;
+  padding: 0;
+  width: 960px;
 }
 
 /* section div {
-  padding: 7px;
+  padding: 10px;
   box-sizing: border-box;
   float: left;
-  width: 50%;
+  width: 20px;
+  border: 1px solid black;
 } */
 
-img {
-  max-height: 300px;
-  max-width: 100%;
-  margin: 0 auto;
-  float: left;
+#clickHere {
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+  /* width: 20px; */
+  border: 1px solid black;
 }
 
-aside { 
-  position: relative;
-  /* padding-top: 800px; */
-  width: 33.333%;
-  float: left;
+#clickHere div {
+  display: inline-block;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  /* float: left;
+  position: relative; */
+  margin: 0 auto;
+  /* padding: 1px; */
+  border: 1px solid black;
 }
 
 footer {
-  /* max-width: 900px; */
+  font-size: 48pt;
+  text-align: center;
+  font: sans-serif;
+  height: 100px;
+  width: 100%;
+  float: left;
+  /* position: relative; */
   margin: auto;
+  /* padding: 1px; */
+  border: 1px solid black;
 }
+
+/* aside {
+  font-size: 18pt;
+  font: sans-serif;
+  height: 100px;
+  width: 25%;
+  float: left;
+  position: fixed;
+  margin: auto;
+  padding: 1px;
+  border: 1px solid black;
+} */
+
+
