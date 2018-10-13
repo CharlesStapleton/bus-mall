@@ -1,6 +1,5 @@
 'use strict';
 
-// var busmalContainer = document.getElementById('busmal-container');
 var imageSectionContainer = document.getElementById('clickHere');
 // Collect all document element references we need, including ctx for chartjs
 var leftImgContainer = document.getElementById('leftImg');
@@ -10,8 +9,8 @@ var currentLeftImgArrayIndex = 0;
 var currentMiddleImgArrayIndex = 1;
 var currentRightImgArrayIndex = 2;
 
-// references to the current images on the page
-//document.getElementById
+var ctx = document.getElementById('myChart').getContext('2d');
+console.log(ctx);
 
 var clickCounter = 0; // counter for all of our clicks
 
@@ -30,18 +29,14 @@ var chooseNewImage = function (){
   // choose 3 new random images that dont repeat from the current images or each other
   do {
     var randomNumberLeft = Math.floor(Math.random() * allImages.length);
-    // console.log(randomNumberLeft);
   } while (randomNumberLeft === currentLeftImgArrayIndex || randomNumberLeft === currentMiddleImgArrayIndex || randomNumberLeft === currentRightImgArrayIndex);
-  // } while (randomNumberLeft === currentLeftImgArrayIndex || randomNumberLeft === currentMiddleImgArrayIndex || randomNumberLeft === currentRightImgArrayIndex);
 
   do {
     var randomNumberMiddle = Math.floor(Math.random() * allImages.length);
-    // console.log(randomNumberMiddle);
   } while (randomNumberMiddle === currentLeftImgArrayIndex || randomNumberMiddle === currentMiddleImgArrayIndex || randomNumberMiddle === currentRightImgArrayIndex || randomNumberMiddle === randomNumberLeft);
 
   do {
     var randomNumberRight = Math.floor(Math.random() * allImages.length);
-    // console.log(randomNumberRight);
   } while (randomNumberRight === currentLeftImgArrayIndex || randomNumberRight === currentMiddleImgArrayIndex || randomNumberRight === currentRightImgArrayIndex || randomNumberRight === randomNumberLeft || randomNumberRight === randomNumberMiddle);
 
   // Persisting current pictures
@@ -69,6 +64,7 @@ var handleBusmalClick = function (event) {
       allImages[currentRightImgArrayIndex].likes++;
       console.log('Right image was clicked');
     }
+
     // increment all current images appeared count
     allImages[currentLeftImgArrayIndex].appeared++;
     allImages[currentMiddleImgArrayIndex].appeared++;
@@ -89,16 +85,16 @@ var handleBusmalClick = function (event) {
 
       // Show images' likes / appearances
       console.log(allImages);
-      var imageResults = document.getElementById('imageResults');
-      
-      for (var i = 0; i < allImages.length; i++) {
-        var liEl = document.createElement('li');
-        liEl.textContent = allImages[i].name + ': ' + allImages[i].likes;
-        imageResults.appendChild(liEl);
-      }
+      // var imageResults = document.getElementById('imageResults');
+
+      // for (var i = 0; i < allImages.length; i++) {
+      //   var liEl = document.createElement('li');
+      //   liEl.textContent = allImages[i].name + ': ' + allImages[i].likes;
+      //   imageResults.appendChild(liEl);
+      // }
 
       // make chart appear
-      // renderChart();
+      renderChart();
     }
   }
 };
@@ -106,7 +102,6 @@ var handleBusmalClick = function (event) {
 imageSectionContainer.addEventListener('click', handleBusmalClick);
 
 // instantiate all new images
-// (new Image('cool.jpg))
 new ProductImage('../img/bag.jpg', 'Bag');
 new ProductImage('../img/banana.jpg', 'Banana');
 new ProductImage('../img/bathroom.jpg', 'Bathroom');
@@ -134,13 +129,51 @@ new ProductImage('../img/wine-glass.jpg', 'Wine Glass');
 
 //function to render the chart
 var renderChart = function () {
-  // chartjs needs ctx
+  var imageNames = [];
+  var imageLikes = [];
+  var colors = [];
+  for (var i in allImages) {
+    imageNames.push(allImages[i].name);
+    imageLikes.push(allImages[i].likes);
+    colors.push('orange');
+  }
 
-  //=================
-  //collect all data
-  // we need labels, data values, colors,
+  console.log(imageLikes);
 
-  // create a data object that gets passed all our other arrays, based off of the example from chartjs
-  //============
-  //call a new Chart and pass in ctx and our data
+  var chartData = {
+    labels: imageNames,
+    datasets: [{
+      label: '# of Votes',
+      data: imageLikes,
+      backgroundColor: colors,
+      borderColor: [
+        'rgba(255,99,132,1)',
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  var chartOptions = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    animation: {
+      duration: 800,
+      easing: 'easeInCirc',
+    },
+    responsive: true,
+  };
+
+  var barChart = {
+    type: 'horizontalBar',
+    data: chartData,
+    options: chartOptions,
+  };
+
+  // render the chart
+  var myChart = new Chart(ctx, barChart);
 };
