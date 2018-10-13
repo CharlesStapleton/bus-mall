@@ -6,7 +6,6 @@ var imageSectionContainer = document.getElementById('clickHere');
 var leftImgContainer = document.getElementById('leftImg');
 var middleImgContainer = document.getElementById('middleImg');
 var rightImgContainer = document.getElementById('rightImg');
-// var imageSectionContainer = document.getElementById('clickHere');
 var currentLeftImgArrayIndex = 0;
 var currentMiddleImgArrayIndex = 1;
 var currentRightImgArrayIndex = 2;
@@ -29,19 +28,6 @@ var ProductImage = function (src, name){
 
 var chooseNewImage = function (){
   // choose 3 new random images that dont repeat from the current images or each other
-  // do {
-  //   var randomNumberLeft = Math.floor(Math.random() * allImages.length);
-  // } while (randomNumberLeft === currentLeftImgArrayIndex || randomNumberLeft === currentMiddleImgArrayIndex || randomNumberLeft === currentRightImgArrayIndex);
-  // // } while (randomNumberLeft === currentLeftImgArrayIndex || randomNumberLeft === currentMiddleImgArrayIndex || randomNumberLeft === currentRightImgArrayIndex);
-
-  // do {
-  //   var randomNumberMiddle = Math.floor(Math.random() * allImages.length);
-  // } while (randomNumberMiddle === currentLeftImgArrayIndex || randomNumberMiddle === currentMiddleImgArrayIndex || randomNumberMiddle === currentRightImgArrayIndex || randomNumberMiddle === randomNumberLeft);
-
-  // do {
-  //   var randomNumberRight = Math.floor(Math.random() * allImages.length);
-  // } while (randomNumberRight === currentLeftImgArrayIndex || randomNumberRight === currentMiddleImgArrayIndex || randomNumberRight === currentRightImgArrayIndex || randomNumberRight === randomNumberLeft || randomNumberRight === randomNumberMiddle);
-
   do {
     var randomNumberLeft = Math.floor(Math.random() * allImages.length);
     // console.log(randomNumberLeft);
@@ -101,8 +87,15 @@ var handleBusmalClick = function (event) {
       // shut the listener off
       imageSectionContainer.removeEventListener('click', handleBusmalClick);
 
-      // Show images' likes/appearances 
+      // Show images' likes / appearances
       console.log(allImages);
+      var imageResults = document.getElementById('imageResults');
+      
+      for (var i = 0; i < allImages.length; i++) {
+        var liEl = document.createElement('li');
+        liEl.textContent = allImages[i].name + ': ' + allImages[i].likes;
+        imageResults.appendChild(liEl);
+      }
 
       // make chart appear
       // renderChart();

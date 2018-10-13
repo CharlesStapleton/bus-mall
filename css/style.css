@@ -18,6 +18,10 @@ header {
   box-sizing: border-box;
 }
 
+header img {
+  float: left;
+}
+
 /* body, html {
 height: 100%;
 width: 960px;
@@ -57,20 +61,34 @@ nav li {
 } */
 
 aside {
-  /* display: inline-block; */
   font-size: 18pt;
   font: sans-serif;
-  height: 500px;
-  padding-left: 30px;
+  height: 550px;
+  /* padding-left: 30px; */
   width: 33.333%;
   float: left;
   border: 1px solid black;
+}
+
+aside h1 {
+  text-align: left;
+}
+
+ul {
+  padding-top: 30px;
+  padding-left: 30px;
 }
 
 h1 {
 font-size: 30px;
 font-family: sans-serif;
 font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 hr {
@@ -97,7 +115,6 @@ hr {
   display: inline-block;
   padding: 10px;
   box-sizing: border-box;
-  /* width: 20px; */
   border: 1px solid black;
 }
 
@@ -105,7 +122,7 @@ hr {
   display: inline-block;
 }
 
-img {
+div img {
   height: 200px;
   width: 200px;
   /* float: left;
