@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24pt;
+}
+
+h2 {
+  font-size: 18pt;
+}
+
+section {
+  margin-top: 0;
+  float: left;
+  width: 66.666%;;
+}
+
+/* section div {
+  padding: 7px;
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+} */
+
+img {
+  max-height: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  float: left;
+}
+
+aside { 
+  position: relative;
+  /* padding-top: 800px; */
+  width: 33.333%;
+  float: left;
+}
+
+footer {
+  /* max-width: 900px; */
+  margin: auto;
+}

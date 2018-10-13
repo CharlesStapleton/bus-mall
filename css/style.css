@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+/* body {
+  margin-left: 480px;
+  margin-top: 30px;
+} */
+
+.active {
+  background-color: grey;
+}
+
+header {
+  font-family: sans-serif;
+  height: 100px;
+  padding: 13px;
+  box-sizing: border-box;
+}
+
+header img {
+  float: left;
+}
+
+/* body, html {
+height: 100%;
+width: 960px;
+} */
+
+nav {
+  float: right;
+}
+
+nav li {
+  display: inline;
+  position: relative;
+  /* margin: 10px; */
+  bottom: 25px;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 5px; 
+}
+
+/* #rightIcons {
+  position: relative;
+  left: 10px;
+} */
+
+/* header div {
+  float: left;
+  width: 240px;
+  margin: auto;
+} */
+
+/* .headerFont {
+  display: inline-block;
+  position: relative;
+  font-family: 'Yellowtail', cursive;
+  font-size: 40px;
+  top: -16px;
+} */
+
+aside {
+  font-size: 18pt;
+  font: sans-serif;
+  height: 550px;
+  /* padding-left: 30px; */
+  width: 33.333%;
+  float: left;
+  border: 1px solid black;
+}
+
+aside h1 {
+  text-align: left;
+}
+
+ul {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+h1 {
+font-size: 30px;
+font-family: sans-serif;
+font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+hr {
+  display: block;
+  height: 15px;
+  border: 10;
+  background-color: rgb(204, 204, 204);
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  margin-bottom: 60px;
+  padding: 0;
+  width: 960px;
+}
+
+/* section div {
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
+  width: 20px;
+  border: 1px solid black;
+} */
+
+#clickHere {
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+#clickHere div {
+  display: inline-block;
+}
+
+div img {
+  height: 200px;
+  width: 200px;
+  /* float: left;
+  position: relative; */
+  margin: 0 auto;
+  /* padding: 1px; */
+  border: 1px solid black;
+}
+
+footer {
+  font-size: 48pt;
+  text-align: center;
+  font: sans-serif;
+  height: 100px;
+  width: 100%;
+  float: left;
+  /* position: relative; */
+  margin: auto;
+  /* padding: 1px; */
+  border: 1px solid black;
+}
+
+/* aside {
+  font-size: 18pt;
+  font: sans-serif;
+  height: 100px;
+  width: 25%;
+  float: left;
+  position: fixed;
+  margin: auto;
+  padding: 1px;
+  border: 1px solid black;
+} */
+
+
