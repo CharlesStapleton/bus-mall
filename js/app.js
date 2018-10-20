@@ -210,7 +210,6 @@ function updateTempProductImage () {
   localStorage.setItem('tempProductImage', JSON.stringify(allImages));
 }
 
-//update the BigDaddy IceCream.all on 10 clicks
 function updatePermanentProductImage () {
   localStorage.setItem('permanentProductImage', JSON.stringify(allImages));
 }
