@@ -13,6 +13,14 @@ var ctx = document.getElementById('myChart').getContext('2d');
 console.log(ctx);
 
 var clickCounter = 0; // counter for all of our clicks
+
+if (localStorage.clickCounter) {
+  clickCounter = localStorage.getItem('clickCounter');
+  if (localStorage.clickCounter >= 25) {
+    clickCounter = 0;
+  }
+}
+
 var allImages = []; // container for all images
 
 var ProductImage = function (src, name){
@@ -72,7 +80,7 @@ var handleBusmalClick = function (event) {
     // call choose new image function ()
     chooseNewImage();
 
-    // Update total clicks and temporary ProductImage.all on each click
+    // Update total clicks and temporary allImages on each click
     updateTempProductImage();
 
     // increment the total clicks on the page
@@ -81,7 +89,6 @@ var handleBusmalClick = function (event) {
 
     // test if we have clicked 25 times
     if (clickCounter === 25) {
-      // renderChart();
       updatePermanentProductImage();
 
       // shut the listener off
@@ -108,7 +115,7 @@ imageSectionContainer.addEventListener('click', handleBusmalClick);
 
 // instantiate all new images
 if(!localStorage.getItem('tempProductImage')){
-  ProductImage.all = [];
+  allImages = [];
 
   new ProductImage('../img/bag.jpg', 'Bag');
   new ProductImage('../img/banana.jpg', 'Banana');
@@ -132,7 +139,7 @@ if(!localStorage.getItem('tempProductImage')){
   new ProductImage('../img/wine-glass.jpg', 'Wine Glass');
 
 } else { // if local storage already exists, use that instead
-  ProductImage.all = JSON.parse(localStorage.getItem('tempProductImage'));
+  allImages = JSON.parse(localStorage.getItem('tempProductImage'));
 }
 
 if(localStorage.getItem('sessionClicks')){ // get click amount mid-session
@@ -198,12 +205,12 @@ var renderChart = function () {
 // Local Storage
 // ======================================
 
-// Update total clicks and temporary ProductImage.all on each click
+// Update total clicks and temporary allImages on each click
 function updateTempProductImage () {
-  localStorage.setItem('tempProductImage', JSON.stringify(ProductImage.all));
+  localStorage.setItem('tempProductImage', JSON.stringify(allImages));
 }
 
 //update the BigDaddy IceCream.all on 10 clicks
 function updatePermanentProductImage () {
-  localStorage.setItem('permanentProductImage', JSON.stringify(ProductImage.all));
+  localStorage.setItem('permanentProductImage', JSON.stringify(allImages));
 }
