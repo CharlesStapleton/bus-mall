@@ -13,7 +13,6 @@ var ctx = document.getElementById('myChart').getContext('2d');
 console.log(ctx);
 
 var clickCounter = 0; // counter for all of our clicks
-
 var allImages = []; // container for all images
 
 var ProductImage = function (src, name){
@@ -73,12 +72,17 @@ var handleBusmalClick = function (event) {
     // call choose new image function ()
     chooseNewImage();
 
+    // Update total clicks and temporary ProductImage.all on each click
+    updateTempProductImage();
+
     // increment the total clicks on the page
     clickCounter++;
+    localStorage.setItem('clickCounter', clickCounter); // update total clicks in local storage
 
     // test if we have clicked 25 times
     if (clickCounter === 25) {
-      renderChart();
+      // renderChart();
+      updatePermanentProductImage();
 
       // shut the listener off
       imageSectionContainer.removeEventListener('click', handleBusmalClick);
@@ -95,6 +99,7 @@ var handleBusmalClick = function (event) {
 
       // make chart appear
       renderChart();
+      clickCounter = 0;
     }
   }
 };
@@ -102,26 +107,37 @@ var handleBusmalClick = function (event) {
 imageSectionContainer.addEventListener('click', handleBusmalClick);
 
 // instantiate all new images
-new ProductImage('../img/bag.jpg', 'Bag');
-new ProductImage('../img/banana.jpg', 'Banana');
-new ProductImage('../img/bathroom.jpg', 'Bathroom');
-new ProductImage('../img/boots.jpg', 'Boots');
-new ProductImage('../img/breakfast.jpg', 'Breakfast');
-new ProductImage('../img/bubblegum.jpg', 'Bubblegum');
-new ProductImage('../img/chair.jpg', 'Chair');
-new ProductImage('../img/cthulhu.jpg', 'Cthulhu');
-new ProductImage('../img/dog-duck.jpg', 'Dog Duck');
-new ProductImage('../img/dragon.jpg', 'Dragon');
-new ProductImage('../img/pen.jpg', 'Pen');
-new ProductImage('../img/pet-sweep.jpg', 'Pet Sweep');
-new ProductImage('../img/scissors.jpg', 'Scissors');
-new ProductImage('../img/shark.jpg', 'Shark');
-new ProductImage('../img/sweep.png', 'Sweep');
-new ProductImage('../img/tauntaun.jpg', 'Tauntaun');
-new ProductImage('../img/unicorn.jpg', 'Unicorn');
-new ProductImage('../img/usb.gif', 'USB');
-new ProductImage('../img/water-can.jpg', 'Water Can');
-new ProductImage('../img/wine-glass.jpg', 'Wine Glass');
+if(!localStorage.getItem('tempProductImage')){
+  ProductImage.all = [];
+
+  new ProductImage('../img/bag.jpg', 'Bag');
+  new ProductImage('../img/banana.jpg', 'Banana');
+  new ProductImage('../img/bathroom.jpg', 'Bathroom');
+  new ProductImage('../img/boots.jpg', 'Boots');
+  new ProductImage('../img/breakfast.jpg', 'Breakfast');
+  new ProductImage('../img/bubblegum.jpg', 'Bubblegum');
+  new ProductImage('../img/chair.jpg', 'Chair');
+  new ProductImage('../img/cthulhu.jpg', 'Cthulhu');
+  new ProductImage('../img/dog-duck.jpg', 'Dog Duck');
+  new ProductImage('../img/dragon.jpg', 'Dragon');
+  new ProductImage('../img/pen.jpg', 'Pen');
+  new ProductImage('../img/pet-sweep.jpg', 'Pet Sweep');
+  new ProductImage('../img/scissors.jpg', 'Scissors');
+  new ProductImage('../img/shark.jpg', 'Shark');
+  new ProductImage('../img/sweep.png', 'Sweep');
+  new ProductImage('../img/tauntaun.jpg', 'Tauntaun');
+  new ProductImage('../img/unicorn.jpg', 'Unicorn');
+  new ProductImage('../img/usb.gif', 'USB');
+  new ProductImage('../img/water-can.jpg', 'Water Can');
+  new ProductImage('../img/wine-glass.jpg', 'Wine Glass');
+
+} else { // if local storage already exists, use that instead
+  ProductImage.all = JSON.parse(localStorage.getItem('tempProductImage'));
+}
+
+if(localStorage.getItem('sessionClicks')){ // get click amount mid-session
+  clickCounter = JSON.parse(localStorage.getItem('clickCounter'));
+}
 
 // ======================================
 // Charts
@@ -177,3 +193,17 @@ var renderChart = function () {
   // render the chart
   var myChart = new Chart(ctx, barChart);
 };
+
+// ======================================
+// Local Storage
+// ======================================
+
+// Update total clicks and temporary ProductImage.all on each click
+function updateTempProductImage () {
+  localStorage.setItem('tempProductImage', JSON.stringify(ProductImage.all));
+}
+
+//update the BigDaddy IceCream.all on 10 clicks
+function updatePermanentProductImage () {
+  localStorage.setItem('permanentProductImage', JSON.stringify(ProductImage.all));
+}
